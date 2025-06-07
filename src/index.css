@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+  
+  section {
+    scroll-margin-top: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-white text-black hover:bg-gray-100;
+  }
+  
+  .section {
+    @apply py-8 w-full;
+  }
+  
+  .container {
+    @apply px-4 w-full max-w-7xl mx-auto flex flex-col items-center;
+  }
+  
+  .card {
+    @apply bg-gray-900 rounded-xl shadow-md;
+  }
+}
+
+/* Sidebar styling */
+.sidebar {
+  @apply fixed left-0 top-0 h-full bg-black border-r border-gray-800 z-40;
+  width: 0;
+}
+
+.sidebar-expanded {
+  width: 240px;
+}
+
+.sidebar-collapsed {
+  width: 60px;
+}
+
+/* Content area styling */
+.main-content {
+  @apply transition-all duration-300 pt-16;
+}
+
+.main-content-expanded {
+  margin-left: 240px;
+}
+
+.main-content-collapsed {
+  margin-left: 60px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .sidebar {
+    @apply w-0;
+  }
+  
+  .sidebar-expanded {
+    @apply w-64;
+  }
+  
+  .main-content,
+  .main-content-expanded,
+  .main-content-collapsed {
+    @apply ml-0;
+  }
+}
