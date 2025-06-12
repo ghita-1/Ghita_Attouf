@@ -63,7 +63,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               animate={{ opacity: 1 }}
               className="text-lg font-semibold text-white"
             >
-              Ghita
+              Attouf Ghita
             </motion.span>
           )}
         </div>
