@@ -10,6 +10,38 @@ const AnimatedBackground = () => {
     let animationFrameId;
     let particles = [];
 
+    // Function to draw a star shape
+    const drawStar = (ctx, x, y, radius, opacity) => {
+      const spikes = 5;
+      const outerRadius = radius;
+      const innerRadius = radius * 0.4;
+
+      let rot = Math.PI / 2 * 3;
+      let step = Math.PI / spikes;
+
+      ctx.beginPath();
+      ctx.moveTo(x, y - outerRadius);
+
+      for (let i = 0; i < spikes; i++) {
+        ctx.lineTo(
+          x + Math.cos(rot) * outerRadius,
+          y + Math.sin(rot) * outerRadius
+        );
+        rot += step;
+
+        ctx.lineTo(
+          x + Math.cos(rot) * innerRadius,
+          y + Math.sin(rot) * innerRadius
+        );
+        rot += step;
+      }
+      
+      ctx.lineTo(x, y - outerRadius);
+      ctx.closePath();
+      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+      ctx.fill();
+    };
+
     // Set canvas size
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
@@ -19,7 +51,6 @@ const AnimatedBackground = () => {
     // Initialize particles
     const initParticles = () => {
       particles = [];
-      // Increased number of particles even more for denser connections
       const numberOfParticles = Math.floor((window.innerWidth * window.innerHeight) / 6000);
       
       for (let i = 0; i < numberOfParticles; i++) {
@@ -30,7 +61,7 @@ const AnimatedBackground = () => {
           speedX: Math.random() * 0.6 - 0.3,
           speedY: Math.random() * 0.6 - 0.3,
           opacity: Math.random() * 0.6 + 0.2,
-          pulse: Math.random() * Math.PI * 2, // Random starting phase
+          pulse: Math.random() * Math.PI * 2,
           pulseSpeed: 0.02 + Math.random() * 0.02
         });
       }
@@ -40,24 +71,22 @@ const AnimatedBackground = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw connections first (so they appear behind particles)
+      // Draw connections first
       particles.forEach((particle, index) => {
-        // Only check particles ahead in the array to avoid duplicate connections
         for (let i = index + 1; i < particles.length; i++) {
           const otherParticle = particles[i];
           const dx = particle.x - otherParticle.x;
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          // Increased connection distance and added multiple connection thresholds
-          if (distance < 160) { // Increased max distance
+          if (distance < 160) {
             const opacity = distance < 80 
-              ? 0.25 // Stronger opacity for close particles
-              : 0.15 * (1 - (distance - 80) / 80); // Fade out for distant particles
+              ? 0.25
+              : 0.15 * (1 - (distance - 80) / 80);
             
             ctx.beginPath();
             ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.lineWidth = distance < 80 ? 0.6 : 0.4; // Thicker lines for closer particles
+            ctx.lineWidth = distance < 80 ? 0.6 : 0.4;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.stroke();
@@ -65,7 +94,7 @@ const AnimatedBackground = () => {
         }
       });
 
-      // Draw particles on top of connections
+      // Draw stars on top of connections
       particles.forEach(particle => {
         // Update position
         particle.x += particle.speedX;
@@ -81,12 +110,15 @@ const AnimatedBackground = () => {
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
 
-        // Draw glow effect
+        // Draw star with glow
+        ctx.save();
+        
+        // Draw glow
         const gradient = ctx.createRadialGradient(
           particle.x, particle.y, 0,
           particle.x, particle.y, particle.radius * 4
         );
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity * pulseFactor})`);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity * pulseFactor * 0.5})`);
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
         ctx.beginPath();
@@ -94,11 +126,16 @@ const AnimatedBackground = () => {
         ctx.fillStyle = gradient;
         ctx.fill();
 
-        // Draw particle core
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity * pulseFactor})`;
-        ctx.fill();
+        // Draw star
+        drawStar(
+          ctx,
+          particle.x,
+          particle.y,
+          particle.radius * 2,
+          particle.opacity * pulseFactor
+        );
+
+        ctx.restore();
       });
 
       animationFrameId = requestAnimationFrame(animate);
