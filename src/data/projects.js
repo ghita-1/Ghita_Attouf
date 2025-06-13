@@ -1,16 +1,16 @@
 const projects = [
   {
     id: 1,
-    title: "Skill Tracking ",
-    description: "Implemented a skill-tracking system allowing users to add, view, update, and delete skills categorized by type (e.g., Frontend, Backend, Database),also add what prejects they're working for.",
-    image: new URL('../assets/skill.png', import.meta.url).href,
-    techStack: ["Angular", "ASP.NET Core", "Entity Framework", "PostgreSQL", "Web API"],
+    title: "Translate App ",
+    description: "A simple web app that turns typed words into sign language emojis. Built to make learning sign language accessible, and aesthetic.",
+    image: new URL('../assets/translate.png', import.meta.url).href,
+    techStack: ["ReactJs","Vite", "JSON", "CSS"],
     github: "",
     demo: null
   },
   {
     id: 2,
-    title: "chool management system - EPIM",
+    title: "school management system - EPIM",
     description: "work in a team in a back-office department,  where everyone has their own tasks.",
     image: new URL('../assets/OIP.jpg', import.meta.url).href,
     techStack: ["React", "TailwindCSS", "ASP.NET Core",  "SQL Server"],
@@ -41,9 +41,18 @@ const projects = [
     description: " Tell us your height and weight,we’ll give you the right meals & workouts —built for your body, built for your goals.",
     image: new URL('../assets/fitness.png', import.meta.url).href,
     techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
-    github: "",
+    github: null,
     demo: "https://fitness-app-ivory-two.vercel.app/"
-  }
+  },
+  {
+    id: 6,
+    title: "Shop App",
+    description: "Just a glimpse from the full UI clean, cozy, and user-focused. More pages, more features behind the scenes.",
+    image: new URL('../assets/shop.png', import.meta.url).href,
+    techStack: ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    github: null,
+    demo: null
+  },
 ]
 
 export default projects

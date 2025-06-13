@@ -1,17 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // Layout Components
 import Sidebar from './components/layout/Sidebar'
 import MobileMenuButton from './components/layout/MobileMenuButton'
 import AnimatedBackground from './components/shared/AnimatedBackground'
+import AIChat from './components/shared/AIChat'
 
-// Pages
-import Home from './pages/Home'
-import About from './pages/About'
-import Skills from './pages/Skills'
-import Projects from './pages/Projects'
-import Resume from './pages/Resume'
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Skills = lazy(() => import('./pages/Skills'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Resume = lazy(() => import('./pages/Resume'))
+
+// Loading component
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+)
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -66,25 +74,27 @@ const App = () => {
           `}
         >
           <div className="container mx-auto">
-            <section id="home" className="min-h-screen">
-              <Home />
-            </section>
-            
-            <section id="about" className="min-h-screen -mt-10">
-              <About />
-            </section>
-            
-            <section id="skills" className="min-h-screen">
-              <Skills />
-            </section>
-            
-            <section id="projects" className="min-h-screen">
-              <Projects />
-            </section>
-            
-            <section id="resume" className="min-h-screen">
-              <Resume />
-            </section>
+            <Suspense fallback={<LoadingSpinner />}>
+              <section id="home" className="min-h-screen">
+                <Home />
+              </section>
+              
+              <section id="about" className="min-h-screen -mt-10">
+                <About />
+              </section>
+              
+              <section id="skills" className="min-h-screen">
+                <Skills />
+              </section>
+              
+              <section id="projects" className="min-h-screen">
+                <Projects />
+              </section>
+              
+              <section id="resume" className="min-h-screen">
+                <Resume />
+              </section>
+            </Suspense>
           </div>
         </main>
       </div>
@@ -99,6 +109,9 @@ const App = () => {
           onClick={toggleSidebar}
         />
       )}
+
+      {/* AI Chat */}
+      <AIChat />
     </div>
   )
 }
