@@ -104,16 +104,17 @@ const About = () => {
                 >
                   <h4 className="text-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">Experience</h4>
                   <ul className="space-y-4">
+                  <li className="p-3 rounded-lg bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10">
+                      <div className="font-medium text-white">.NET/Angular Developer</div>
+                      <div className="text-sm text-gray-400">Internship - DXC.CDG</div>
+                      <div className="text-xs text-purple-400">2025</div>
+                    </li>
                     <li className="p-3 rounded-lg bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10">
                       <div className="font-medium text-white">.NET/React Developer</div>
                       <div className="text-sm text-gray-400">Intensive Internship - JobInTech(UIR)</div>
                       <div className="text-xs text-purple-400">2024</div>
                     </li>
-                    <li className="p-3 rounded-lg bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10">
-                      <div className="font-medium text-white">.NET/Angular Developer</div>
-                      <div className="text-sm text-gray-400">Internship - DXC.CDG</div>
-                      <div className="text-xs text-purple-400">2025</div>
-                    </li>
+                    
                   </ul>
                 </motion.div>
               </div>

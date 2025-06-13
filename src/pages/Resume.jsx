@@ -133,6 +133,42 @@ const Resume = () => {
                 </div>
   
                 <div className="space-y-6 pl-4">
+                  
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                    className="p-4 rounded-xl bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                      <h4 className="font-semibold text-lg text-white">ASP.NET Core/Angular Internship</h4>
+                      <span className="text-sm text-purple-400">April 2025 - Present</span>
+                    </div>
+                    <p className="text-purple-300 mb-3">DXC.CDG</p>
+                    <ul className="space-y-2 text-gray-300">
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Developed skill-tracking system with CRUD operations
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Implemented technical skills categorization system
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Integrated project tracking features
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Built using Angular with .NET Web API
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        Implemented RESTful API endpoints
+                      </li>
+                    </ul>
+                  </motion.div>
+                  
                   <motion.div 
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -168,40 +204,6 @@ const Resume = () => {
                     </ul>
                   </motion.div>
 
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 1.0 }}
-                    className="p-4 rounded-xl bg-gradient-to-br from-purple-500/5 to-pink-500/5 border border-purple-500/10"
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                      <h4 className="font-semibold text-lg text-white">ASP.NET Core/Angular Internship</h4>
-                      <span className="text-sm text-purple-400">April 2025 - Present</span>
-                    </div>
-                    <p className="text-purple-300 mb-3">DXC.CDG</p>
-                    <ul className="space-y-2 text-gray-300">
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        Developed skill-tracking system with CRUD operations
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        Implemented technical skills categorization system
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        Integrated project tracking features
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        Built using Angular with .NET Web API
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        Implemented RESTful API endpoints
-                      </li>
-                    </ul>
-                  </motion.div>
                 </div>
               </div>
               
