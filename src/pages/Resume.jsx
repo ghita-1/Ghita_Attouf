@@ -72,15 +72,7 @@ const Resume = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                     className="space-y-1"
                   >
-                    <p className="text-gray-400">Phone:</p>
-                    <p className="font-medium text-white">0669035296</p>
-                  </motion.div>
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="space-y-1"
-                  >
+                  
                     <p className="text-gray-400">Location:</p>
                     <p className="font-medium text-white">Morocco, Sale Aljadida</p>
                   </motion.div>

@@ -57,10 +57,10 @@ const AIChat = () => {
   
     // Professional Vibes
     if (lowerMessage.includes('tech stack')) {
-      return "Ghita’s main tech stack includes .NET, React, Angular, Node.js, and SQL.";
+      return "Ghita's main tech stack includes .NET, React, Angular, Node.js, and SQL.";
     }
     if (lowerMessage.includes('specialty')) {
-      return "Ghita’s specialty is full-stack development, building robust web applications using .NET, React, and Angular.";
+      return "Ghita's specialty is full-stack development, building robust web applications using .NET, React, and Angular.";
     }
     if (lowerMessage.includes('projects') || lowerMessage.includes('worked on')) {
       return "Ghita has worked on several notable projects, including a Car Rental System and an Islamic App. Each project showcases her skills in full-stack development and her ability to tackle complex challenges.";
@@ -244,7 +244,7 @@ const AIChat = () => {
       </AnimatePresence>
 
       {/* Custom Scrollbar Styles */}
-      <style jsx global>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }
