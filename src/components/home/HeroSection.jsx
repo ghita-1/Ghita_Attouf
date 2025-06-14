@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="container mx-auto min-h-screen flex items-center">
         <div className="w-full">
           {/* Download Resume Button */}
-          <div className="flex justify-end mb-16">
+          <div className="flex justify-end mb-5">
             <motion.a
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
